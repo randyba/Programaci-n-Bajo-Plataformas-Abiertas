@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #define SIZE 3
+#include<stdlib.h>
+#include <time.h>
 
 
 int findLargestLine(int matrix[][SIZE]){
@@ -67,16 +69,29 @@ int findLargestLine(int matrix[][SIZE]){
 
 
 int main(){
-    int matrix[SIZE][SIZE] = {
-        {2, 7, 6},
-        {9, 5, 1},
-        {4, 3, 8}
-    };
 
+    int matrix[SIZE][SIZE];
+
+    //con esto iniciamos es geneardor basado en el tiempo de la maquina
+    srand(time(NULL));
+    //llenamos la matriz entrada por entrada
+    for (int i = 0; i < SIZE; i++)
+    {
+        for (int j = 0; j < SIZE; j++)
+        {
+            //el rango no se especifica en el enunciado, pero lo definimos en de 1 a 100
+            matrix[i][j] = (rand() % 100) + 1;
+        }
+        
+    }
+    
+    // definimos la variable que nos indicara si es una matriz con la condicion que queremos
     bool magico = findLargestLine(matrix);
+    //verificamos si la matriz es un cadrado magico
     if (magico == true)
     {
         printf("La matriz utilizada corresponde a: \n\n");
+        //acontinuacion se imprime los valores entrada por entrada de la matriz en la pantalla
         for (int l = 0; l < SIZE; l++)
         {
             for (int m = 0; m < SIZE; m++)
@@ -87,6 +102,21 @@ int main(){
         }
         printf("\nLa matriz es un cuadrado magico.\n");
     }
+    // sino mostramos la matriz que se evaluo y se indica en la pantalla que la matriz no cumple con los requisitos
+    else
+    {
+        printf("La matriz utilizada corresponde a: \n\n");
+        for (int l = 0; l < SIZE; l++)
+        {
+            for (int m = 0; m < SIZE; m++)
+            {
+                printf("%d ", matrix[l][m]);
+            }
+            printf("\n");
+        }
+        printf("\nLa matriz NO es un cuadrado magico.\n");
+    }
+    
 
     
     
