@@ -10,8 +10,10 @@ int factorial (int n){
   return i;  
 }
 int main(int argc, char *argv[]){
-    int fac4 = factorial(4);
-    int fac5 = factorial(5);
-    printf("4! = %d, 5! = %d\n", fac4, fac5);
+    int numeroacalcular;
+    printf("Ingrese un numero para calcular su factorial: ");
+    scanf("%d", &numeroacalcular);
+    int facnumeroacalcular = factorial(numeroacalcular);
+    printf("El numero que ingreso es: %d y su factorial es: %d\n", numeroacalcular, facnumeroacalcular);
     return 0;
 }
